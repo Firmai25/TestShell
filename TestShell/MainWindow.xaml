@@ -1,0 +1,71 @@
+﻿<Window x:Class="TestShell.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:TestShell"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        AllowsTransparency="True"
+        Background="Transparent" 
+        WindowStyle="None"
+        WindowStartupLocation="CenterScreen"
+        SourceInitialized="Window_SourceInitialized">
+    <Grid>
+        <Border Width="auto" Height="auto" BorderBrush="#e7ebf7" BorderThickness="2"
+                CornerRadius="15">
+            <Border.Background>
+                <LinearGradientBrush>
+                    <GradientBrush.GradientStops>
+                        <GradientStopCollection>
+                            <GradientStop Color="#e7ebf7" Offset="0.0"></GradientStop>
+                            <GradientStop Color="#cee3ff" Offset="0.5"></GradientStop>
+                        </GradientStopCollection>
+                    </GradientBrush.GradientStops>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Grid >
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="auto"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="auto"></RowDefinition>
+                </Grid.RowDefinitions>
+
+                <Grid MouseLeftButtonDown="MoveWindow_MouseLeftButtonDown">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition/>
+                        <ColumnDefinition/>
+                    </Grid.ColumnDefinitions>
+                    <TextBlock Text="Тестовая оболочка" Padding="5"></TextBlock>
+                    <Button x:Name="Btn"
+                            Width="40"
+                            Height="40"
+                            Content="X"
+                            Style="{StaticResource RoundCorner}"
+                            Click="ExitWindow_Click"
+                            HorizontalAlignment="Right"
+                            Grid.Column="1"
+                            Margin="0,-2,-2,0">
+
+                    </Button>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition/>
+                    </Grid.RowDefinitions>
+                    <Frame Grid.Row="1"
+                           x:Name="FrameMain"
+                           NavigationUIVisibility="Hidden"/>
+                </Grid>
+                <Rectangle Grid.RowSpan="3" Width="5" VerticalAlignment="Stretch" HorizontalAlignment="Right"
+                           Cursor="SizeWE" Fill="Transparent"
+                           MouseLeftButtonDown="RectangleRight_MouseLeftButtonDown" MouseLeftButtonUp="RectangleRight_MouseLeftButtonUp"
+                           MouseMove="RectangleRight_MouseMove"></Rectangle>
+                <Rectangle Grid.RowSpan="3" Height="5" VerticalAlignment="Bottom" HorizontalAlignment="Stretch"
+                           Cursor="SizeNS" Fill="Transparent"
+                           MouseLeftButtonDown="RectangleLeft_MouseLeftButtonDown" MouseLeftButtonUp="RectangleLeft_MouseLeftButtonUp"
+                           MouseMove="Rectangle_MouseMoveLeft"></Rectangle>
+            </Grid>
+        </Border>
+    </Grid>
+</Window>
